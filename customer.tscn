@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://w5vjdipkcmlb"]
+
+[ext_resource type="Script" path="res://scripts/customer.gd" id="1_fc8pt"]
+[ext_resource type="Texture2D" uid="uid://bo86qpgtd1mju" path="res://pics/customer9.png" id="2_bn6kp"]
+[ext_resource type="Texture2D" uid="uid://deqbpfctlwvsj" path="res://pics/Comics_Speech_Bubble_Clipart.png" id="3_eyfm8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7k52"]
+font_size = 24
+
+[node name="Customer" type="Node2D"]
+script = ExtResource("1_fc8pt")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="TimeRemainingLabel" type="Label" parent="."]
+visible = false
+offset_left = -115.0
+offset_top = 243.0
+offset_right = -75.0
+offset_bottom = 277.0
+text = "60s"
+label_settings = SubResource("LabelSettings_d7k52")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(130, 572)
+scale = Vector2(0.262, 0.262)
+texture = ExtResource("2_bn6kp")
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 1.1
+
+[node name="SpeechBubble" type="Sprite2D" parent="."]
+position = Vector2(294, 489)
+scale = Vector2(0.0281033, 0.0201734)
+texture = ExtResource("3_eyfm8")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

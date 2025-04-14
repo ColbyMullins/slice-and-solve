@@ -1,0 +1,372 @@
+[gd_scene load_steps=22 format=3 uid="uid://br3o1txfjfw2s"]
+
+[ext_resource type="Script" path="res://scripts/node_2d.gd" id="1_gbjhp"]
+[ext_resource type="Texture2D" uid="uid://bp4h0sqrs1jd7" path="res://pics/checkmark.webp" id="2_i5an5"]
+[ext_resource type="Texture2D" uid="uid://b058lidrtk8kv" path="res://pics/bowl.svg" id="3_fxllr"]
+[ext_resource type="Texture2D" uid="uid://plhjy0oo3yje" path="res://pics/pepperoni.svg" id="3_kq571"]
+[ext_resource type="PackedScene" uid="uid://o5d6orguuvn" path="res://spawner.tscn" id="3_nbmal"]
+[ext_resource type="PackedScene" uid="uid://di5jyc81ceso4" path="res://pizza.tscn" id="4_yrpnb"]
+[ext_resource type="Texture2D" uid="uid://dhshl8nd5elvo" path="res://pics/pepperoni_1.svg" id="5_depyt"]
+[ext_resource type="Script" path="res://scripts/manager.gd" id="6_4u0ux"]
+[ext_resource type="Texture2D" uid="uid://bdywfy1stxx0d" path="res://pics/mushrooms_1.svg" id="6_q0ihd"]
+[ext_resource type="Texture2D" uid="uid://buhxej8u4teow" path="res://pics/mushrooms.svg" id="7_lrvdi"]
+[ext_resource type="Texture2D" uid="uid://clj8cmwnscmnp" path="res://pics/green.png" id="8_homs7"]
+[ext_resource type="PackedScene" uid="uid://cjem4nw6wo47q" path="res://TimerUI.tscn" id="8_j43xp"]
+[ext_resource type="Texture2D" uid="uid://40capr2r2jbn" path="res://pics/pineapple.png" id="9_8xveb"]
+[ext_resource type="Texture2D" uid="uid://p8bb0je25wq6" path="res://pics/AAAAAAAAAAAA.webp" id="10_5yy42"]
+[ext_resource type="AudioStream" uid="uid://divek64fh4sxn" path="res://audio/winsound.wav" id="11_16igx"]
+[ext_resource type="Script" path="res://audio_stream_player_2d.gd" id="12_3iw2r"]
+[ext_resource type="AudioStream" uid="uid://c72h8w0mbv28f" path="res://audio/losesound.wav" id="13_3sriv"]
+[ext_resource type="Script" path="res://loss_sound_player.gd" id="14_iyhr6"]
+[ext_resource type="Texture2D" uid="uid://f8yt1jyhgt2j" path="res://pics/IMG_3818.jpg" id="15_kcwle"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_52xma"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lr7me"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_gbjhp")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 401.0
+offset_top = 452.0
+offset_right = 468.0
+offset_bottom = 482.0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+visible = false
+offset_left = 419.0
+offset_top = 341.0
+offset_right = 486.063
+offset_bottom = 372.0
+text = "0"
+
+[node name="Pepperoni" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 190.0
+offset_right = 188.0
+offset_bottom = 235.0
+text = "test"
+label_settings = SubResource("LabelSettings_52xma")
+
+[node name="PepperoniCheckmark" type="Sprite2D" parent="Pepperoni"]
+position = Vector2(127, 20)
+scale = Vector2(0.056723, 0.056723)
+texture = ExtResource("2_i5an5")
+
+[node name="Mushroom" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 251.0
+offset_right = 193.0
+offset_bottom = 296.0
+text = "test"
+label_settings = SubResource("LabelSettings_lr7me")
+
+[node name="MushroomCheckmark" type="Sprite2D" parent="Mushroom"]
+position = Vector2(127, 21)
+scale = Vector2(0.0601744, 0.0601744)
+texture = ExtResource("2_i5an5")
+
+[node name="Onion" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 282.0
+offset_right = 192.0
+offset_bottom = 327.0
+text = "test"
+label_settings = SubResource("LabelSettings_lr7me")
+
+[node name="OnionCheckmark" type="Sprite2D" parent="Onion"]
+position = Vector2(126, 22)
+scale = Vector2(0.0584346, 0.0584346)
+texture = ExtResource("2_i5an5")
+
+[node name="Green" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 220.0
+offset_right = 191.0
+offset_bottom = 265.0
+text = "test"
+label_settings = SubResource("LabelSettings_lr7me")
+
+[node name="GreenCheckmark" type="Sprite2D" parent="Green"]
+position = Vector2(126, 22)
+scale = Vector2(0.0584346, 0.0584346)
+texture = ExtResource("2_i5an5")
+
+[node name="Pineapple" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 313.0
+offset_right = 191.0
+offset_bottom = 358.0
+text = "test"
+label_settings = SubResource("LabelSettings_lr7me")
+
+[node name="PineappleCheckmark" type="Sprite2D" parent="Pineapple"]
+position = Vector2(126, 22)
+scale = Vector2(0.0584346, 0.0584346)
+texture = ExtResource("2_i5an5")
+
+[node name="SolutionLabel" type="Label" parent="."]
+offset_left = 610.0
+offset_top = 343.0
+offset_right = 764.0
+offset_bottom = 382.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="RegenerateButton" type="Button" parent="."]
+visible = false
+offset_left = 389.0
+offset_top = 329.0
+offset_right = 494.0
+offset_bottom = 371.0
+text = "Regenerate"
+
+[node name="PepperoniBowl" parent="." node_paths=PackedStringArray("drop_area") instance=ExtResource("3_nbmal")]
+visible = false
+position = Vector2(266, 153)
+scale = Vector2(0.0837987, 0.0868631)
+texture = ExtResource("3_fxllr")
+drop_area = NodePath("../Pizza")
+topping_type = "pepperoni"
+topping_texture = ExtResource("5_depyt")
+
+[node name="MushroomBowl" parent="." instance=ExtResource("3_nbmal")]
+visible = false
+position = Vector2(402, 154)
+scale = Vector2(0.0570472, 0.0840531)
+texture = ExtResource("3_fxllr")
+topping_type = "mushroom"
+topping_texture = ExtResource("6_q0ihd")
+
+[node name="OnionBowl" parent="." node_paths=PackedStringArray("drop_area") instance=ExtResource("3_nbmal")]
+visible = false
+position = Vector2(466, 155)
+scale = Vector2(0.0583379, 0.0895976)
+texture = ExtResource("3_fxllr")
+drop_area = NodePath("../Pizza")
+topping_type = "onion"
+topping_texture = ExtResource("10_5yy42")
+
+[node name="GreenBowl" parent="." node_paths=PackedStringArray("drop_area") instance=ExtResource("3_nbmal")]
+visible = false
+position = Vector2(338, 152)
+scale = Vector2(0.0655247, 0.0839343)
+texture = ExtResource("3_fxllr")
+drop_area = NodePath("../Pizza")
+topping_type = "green"
+topping_texture = ExtResource("8_homs7")
+
+[node name="PineappleBowl" parent="." node_paths=PackedStringArray("drop_area") instance=ExtResource("3_nbmal")]
+visible = false
+position = Vector2(532, 155)
+scale = Vector2(0.0672225, 0.0895976)
+texture = ExtResource("3_fxllr")
+drop_area = NodePath("../Pizza")
+topping_type = "pineapple"
+topping_texture = ExtResource("9_8xveb")
+
+[node name="Pizza" parent="." instance=ExtResource("4_yrpnb")]
+position = Vector2(400, 296)
+scale = Vector2(0.6, 0.6)
+
+[node name="Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_4u0ux")
+
+[node name="Toppings" type="Node" parent="."]
+
+[node name="ClearButton" type="Button" parent="."]
+z_index = -5
+offset_left = 600.0
+offset_top = 212.0
+offset_right = 713.0
+offset_bottom = 265.0
+scale = Vector2(0.98924, 0.832161)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Clear"
+
+[node name="SubmitButton" type="Button" parent="."]
+z_index = -5
+offset_left = 604.0
+offset_top = 281.0
+offset_right = 685.0
+offset_bottom = 320.0
+scale = Vector2(1.43576, 1.15961)
+text = "Submit"
+
+[node name="PepperoniSprite" type="Sprite2D" parent="."]
+position = Vector2(26, 206)
+scale = Vector2(-0.0371499, -0.0371499)
+texture = ExtResource("3_kq571")
+
+[node name="MushroomSprite" type="Sprite2D" parent="."]
+position = Vector2(25, 270)
+scale = Vector2(0.0353165, 0.0353165)
+texture = ExtResource("7_lrvdi")
+
+[node name="OnionSprite" type="Sprite2D" parent="."]
+position = Vector2(26, 302)
+scale = Vector2(0.0597703, 0.0597703)
+texture = ExtResource("10_5yy42")
+
+[node name="GreenSprite" type="Sprite2D" parent="."]
+position = Vector2(25, 239)
+scale = Vector2(0.0597703, 0.0597703)
+texture = ExtResource("8_homs7")
+
+[node name="PineappleSprite" type="Sprite2D" parent="."]
+position = Vector2(26, 335)
+scale = Vector2(0.0778302, 0.0778302)
+texture = ExtResource("9_8xveb")
+
+[node name="PepperoniSprite2" type="Sprite2D" parent="."]
+position = Vector2(535.86, 227.86)
+scale = Vector2(-0.0371499, -0.0371499)
+texture = ExtResource("3_kq571")
+
+[node name="MushroomSprite2" type="Sprite2D" parent="."]
+position = Vector2(534, 291)
+scale = Vector2(0.0327108, 0.0327108)
+texture = ExtResource("7_lrvdi")
+
+[node name="OnionSprite2" type="Sprite2D" parent="."]
+position = Vector2(536, 326)
+scale = Vector2(0.0597703, 0.0597703)
+texture = ExtResource("10_5yy42")
+
+[node name="GreenSprite2" type="Sprite2D" parent="."]
+position = Vector2(536, 261)
+scale = Vector2(0.0597703, 0.0597703)
+texture = ExtResource("8_homs7")
+
+[node name="PineappleSprite2" type="Sprite2D" parent="."]
+position = Vector2(537, 359)
+scale = Vector2(0.0785126, 0.0785126)
+texture = ExtResource("9_8xveb")
+
+[node name="WinTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+visible = false
+offset_left = 1067.0
+offset_top = 6.0
+offset_right = 1139.0
+offset_bottom = 29.0
+text = "Score: 0"
+
+[node name="TimerUI" parent="." instance=ExtResource("8_j43xp")]
+visible = false
+offset_left = 600.0
+offset_top = 571.0
+offset_right = 600.0
+offset_bottom = 572.0
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="LossSoundPlayer" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("13_3sriv")
+script = ExtResource("14_iyhr6")
+
+[node name="WinSoundPlayer" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("11_16igx")
+script = ExtResource("12_3iw2r")
+
+[node name="ExitButton" type="Button" parent="."]
+visible = false
+offset_left = 519.0
+offset_top = 561.0
+offset_right = 637.0
+offset_bottom = 602.0
+text = "Back/Give up"
+
+[node name="TipLabel" type="Label" parent="."]
+offset_left = 34.0
+offset_top = 354.0
+offset_right = 159.0
+offset_bottom = 377.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Solve all at once!"
+
+[node name="PepNumLabel" type="Label" parent="."]
+offset_left = 557.0
+offset_top = 211.0
+offset_right = 579.0
+offset_bottom = 245.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="MushNumLabel" type="Label" parent="."]
+offset_left = 557.0
+offset_top = 273.0
+offset_right = 584.0
+offset_bottom = 307.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="OnionNumLabel" type="Label" parent="."]
+offset_left = 557.0
+offset_top = 309.0
+offset_right = 581.0
+offset_bottom = 343.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="GreenNumLabel" type="Label" parent="."]
+offset_left = 557.0
+offset_top = 242.0
+offset_right = 581.0
+offset_bottom = 276.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="PineappleNumLabel" type="Label" parent="."]
+offset_left = 557.0
+offset_top = 342.0
+offset_right = 581.0
+offset_bottom = 376.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(536, 333)
+rotation = -1.57118
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("15_kcwle")
+
+[connection signal="loseSound" from="." to="Sounds/LossSoundPlayer" method="_on_node_2d_lose_sound"]
+[connection signal="solved" from="." to="." method="_on_button_pressed"]
+[connection signal="solved" from="." to="Manager" method="clear_all"]
+[connection signal="winSound" from="." to="Sounds/WinSoundPlayer" method="_on_node_2d_win_sound"]
+[connection signal="pressed" from="RegenerateButton" to="." method="_on_button_pressed"]
+[connection signal="spawn_topping" from="PepperoniBowl" to="Manager" method="_on_spawner_spawn_topping"]
+[connection signal="spawn_topping" from="MushroomBowl" to="Manager" method="_on_spawner_spawn_topping"]
+[connection signal="spawn_topping" from="OnionBowl" to="Manager" method="_on_spawner_spawn_topping"]
+[connection signal="spawn_topping" from="GreenBowl" to="Manager" method="_on_spawner_spawn_topping"]
+[connection signal="spawn_topping" from="PineappleBowl" to="Manager" method="_on_spawner_spawn_topping"]
+[connection signal="topping_left" from="Pizza" to="." method="_on_pizza_topping_left"]
+[connection signal="topping_left" from="Pizza" to="Manager" method="_on_pizza_topping_left"]
+[connection signal="topping_placed" from="Pizza" to="." method="_on_pizza_topping_placed"]
+[connection signal="topping_placed" from="Pizza" to="Manager" method="_on_pizza_topping_placed"]
+[connection signal="lossSound" from="Manager" to="Sounds/LossSoundPlayer" method="_on_manager_loss_sound"]
+[connection signal="pressed" from="ClearButton" to="Manager" method="clear_all"]
+[connection signal="pressed" from="SubmitButton" to="Manager" method="_on_submit_button_pressed"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="WinTimer" to="Manager" method="_on_win_timer_timeout"]
+[connection signal="delay_timeout" from="TimerUI" to="." method="_on_timer_ui_delay_timeout"]
+[connection signal="delay_timeout" from="TimerUI" to="Manager" method="_on_timer_ui_delay_timeout"]
+[connection signal="main_timeout" from="TimerUI" to="Manager" method="_on_time_up"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

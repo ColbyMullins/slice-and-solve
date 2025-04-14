@@ -1,0 +1,26 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Slice And Solve"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://pics/pepperoni.svg"
+
+[display]
+
+window/size/viewport_width=1070
+window/size/viewport_height=665
+window/size/resizable=false
+
+[dotnet]
+
+project/assembly_name="equationgenerator"

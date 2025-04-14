@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://hbsu65hxp864"]
+
+[ext_resource type="PackedScene" uid="uid://br3o1txfjfw2s" path="res://node_2d.tscn" id="1_o3e0x"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_x75g5"]
+[ext_resource type="PackedScene" uid="uid://d3grks33hn4et" path="res://order_scene.tscn" id="2_1c63m"]
+[ext_resource type="PackedScene" uid="uid://d0jia6idfpero" path="res://title_screen.tscn" id="4_dldp3"]
+[ext_resource type="PackedScene" uid="uid://5rae1aqn0jhr" path="res://end_screen.tscn" id="5_10b3k"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_x75g5")
+
+[node name="Node2D" parent="." instance=ExtResource("1_o3e0x")]
+visible = false
+
+[node name="OrderScene" parent="." instance=ExtResource("2_1c63m")]
+visible = false
+
+[node name="TitleScreen" parent="." instance=ExtResource("4_dldp3")]
+
+[node name="EndScreen" parent="." instance=ExtResource("5_10b3k")]
+visible = false
+
+[connection signal="resetAll" from="." to="Node2D" method="_on_main_reset_all"]
+[connection signal="resetAll" from="." to="OrderScene" method="_on_main_reset_all"]
+[connection signal="leavePizzaMode" from="Node2D" to="OrderScene" method="_on_node_2d_leave_pizza_mode"]
+[connection signal="pizzaMode" from="Node2D" to="OrderScene" method="_on_node_2d_pizza_mode"]
+[connection signal="scoreSignal" from="Node2D" to="OrderScene" method="_on_node_2d_score_signal"]
+[connection signal="forceClosePizza" from="OrderScene" to="Node2D" method="_on_order_scene_force_close_pizza"]
+[connection signal="gameOver" from="OrderScene" to="." method="_on_order_scene_game_over"]
+[connection signal="gameOver" from="OrderScene" to="Node2D" method="_on_order_scene_game_over"]
+[connection signal="start" from="TitleScreen" to="." method="_on_title_screen_start"]
+[connection signal="playAgain" from="EndScreen" to="." method="_on_end_screen_play_again"]
