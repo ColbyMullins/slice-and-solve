@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://chct0va6y2igq"]
+
+[sub_resource type="Gradient" id="Gradient_jaus1"]
+offsets = PackedFloat32Array(0.352459)
+colors = PackedColorArray(0.7, 0.6335, 0.63, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lt1on"]
+gradient = SubResource("Gradient_jaus1")
+
+[resource]
+resource_name = "fill"
+texture = SubResource("GradientTexture1D_lt1on")
